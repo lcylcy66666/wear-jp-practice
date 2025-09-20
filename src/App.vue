@@ -1,11 +1,24 @@
-<script setup></script>
+<script setup>
+import TheHeader from './components/TheHeader.vue'
+import Thefooter from './components/Thefooter.vue'
+import HomePage from './components/HomePage.vue';
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <TheHeader />
+
+  <main>
+    <HomePage />
+  </main>
+
+  <Thefooter />
 </template>
 
-<style scoped></style>
+<style scoped>
+main {
+  /* 簡單設定讓 header 和 footer 之間有些空間 */
+  padding-top: 80px;
+  /* 假設 header 高度為 80px */
+  min-height: 100vh;
+}
+</style>
