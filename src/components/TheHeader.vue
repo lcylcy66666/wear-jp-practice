@@ -57,7 +57,6 @@
     max-width: 1200px;
     margin: 0 auto;
     height: 60px;
-    /* 從截圖看，Header 似乎比較矮，調整為 60px */
     padding: 0 20px;
 }
 
