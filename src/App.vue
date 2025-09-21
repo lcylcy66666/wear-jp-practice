@@ -1,6 +1,6 @@
 <script setup>
 import TheHeader from './components/TheHeader.vue'
-import Thefooter from './components/Thefooter.vue'
+import TheFooter from './components/TheFooter.vue'
 import HomePage from './components/HomePage.vue';
 </script>
 
@@ -11,7 +11,7 @@ import HomePage from './components/HomePage.vue';
     <HomePage />
   </main>
 
-  <Thefooter />
+  <TheFooter />
 </template>
 
 <style>
