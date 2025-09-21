@@ -10,6 +10,7 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
+  base: '/wear-jp-practice/', // 將 '你的repository名稱' 替換為你的實際 GitHub repository 名稱
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
