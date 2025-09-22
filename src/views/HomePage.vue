@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import OutfitGrid from './OutfitGrid.vue'
+import OutfitGrid from '@/features/outfits/components/OutfitGrid.vue'
 </script>
 
 <style scoped>
