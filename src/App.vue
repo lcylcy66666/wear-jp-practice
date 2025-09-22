@@ -1,7 +1,7 @@
 <script setup>
 import TheHeader from './components/TheHeader.vue'
 import TheFooter from './components/TheFooter.vue'
-import HomePage from './components/HomePage.vue';
+import HomePage from './views/HomePage.vue'
 </script>
 
 <template>
@@ -20,7 +20,10 @@ body {
   /* 最好也清除 body 的預設外邊距 */
   background-color: #f9f9f9;
   /* 設定柔和的背景色 */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
   /* 使用更現代的字體棧 */
   color: #333;
 }
