@@ -1,50 +1,27 @@
 <template>
-  <header class="site-header">
+  <header class="site-header" :class="{ 'search-mode': isSearchMode }">
     <div class="header-content">
-      <div class="header-left">
+      <div class="header-left" @click="handleSearchClick">
         <div class="search-bar">
           <input type="text" placeholder="コーディネートやユーザーを探す" />
         </div>
       </div>
 
-      <div class="header-center">
+      <div class="header-center" v-if="!isSearchMode">
         <a href="/">
-          <svg
-            width="147"
-            height="32"
-            viewBox="0 0 147 32"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <text
-              x="50%"
-              y="50%"
-              dominant-baseline="middle"
-              text-anchor="middle"
-              font-family="Helvetica, Arial, sans-serif"
-              font-size="30"
-              font-weight="bold"
-              fill="#1C1C1C"
-            >
+          <svg width="147" height="32" viewBox="0 0 147 32" xmlns="http://www.w3.org/2000/svg">
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+              font-family="Helvetica, Arial, sans-serif" font-size="30" font-weight="bold" fill="#1C1C1C">
               LCY
             </text>
           </svg>
         </a>
       </div>
 
-      <div class="header-right">
-        <!-- 「登入」連結，加入了使用者圖示 -->
+      <div class="header-right" v-if="!isSearchMode">
         <a href="#" class="header-link">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
             <circle cx="12" cy="7" r="4" />
           </svg>
@@ -56,7 +33,22 @@
   </header>
 </template>
 
-<script lang="ts" setup></script>
+<script setup>
+const props = defineProps({
+  isSearchMode: {
+    type: Boolean,
+    default: false
+  }
+})
+
+const searchOpenEmit = defineEmits(['open-search'])
+
+function handleSearchClick() {
+  console.log('Search bar clicked, emitting event!')
+  searchOpenEmit('open-search')
+}
+
+</script>
 
 <style scoped>
 .site-header {
@@ -67,6 +59,37 @@
   background-color: #fff;
   border-bottom: 1px solid #e0e0e0;
   z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.site-header.search-mode {
+  background-color: rgb(51, 51, 51);
+  border-bottom: 1px solid #555;
+}
+
+.site-header.search-mode .header-left {
+  flex: none;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.site-header.search-mode .search-bar {
+  width: 50%;
+}
+
+.site-header.search-mode .search-bar input {
+  background-color: #4C4C4C;
+  background-image: none;
+  border: 1px solid #666;
+  color: #fff;
+  width: 100%;
+  max-width: none;
+  padding: 8px 12px;
+  box-sizing: border-box;
+}
+
+.site-header.search-mode .search-bar input::placeholder {
+  color: #bbb;
 }
 
 .header-content {

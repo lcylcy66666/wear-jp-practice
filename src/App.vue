@@ -1,18 +1,33 @@
-<script setup>
-import TheHeader from './components/TheHeader.vue'
-import TheFooter from './components/TheFooter.vue'
-import HomePage from './views/HomePage.vue'
-</script>
-
 <template>
-  <TheHeader />
+  <TheHeader @open-search="openSearch" :isSearchMode="isSearchOpen" />
 
   <main>
     <HomePage />
   </main>
 
   <TheFooter />
+
+  <SearchOverlay v-if="isSearchOpen" @close="closeSearch" />
 </template>
+
+<script setup>
+import { ref } from 'vue'
+import TheHeader from './components/TheHeader.vue'
+import TheFooter from './components/TheFooter.vue'
+import HomePage from './views/HomePage.vue'
+import SearchOverlay from './components/SearchOverlay.vue'
+
+const isSearchOpen = ref(false)
+
+function openSearch() {
+  isSearchOpen.value = true
+}
+
+function closeSearch() {
+  isSearchOpen.value = false
+}
+
+</script>
 
 <style>
 body {
