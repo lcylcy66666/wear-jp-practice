@@ -19,3 +19,6 @@ No automated suite exists yet. When adding tests, use Vitest plus @vue/test-util
 
 ## Commit & Pull Request Guidelines
 Commits follow conventional types (`feat:`, `fix:`, `doc:`, `refactor:`). Keep messages in the imperative mood and scoped to one change. Pull requests should summarize intent, list major UI/UX impacts, link issues or task IDs, and attach before/after screenshots when altering presentation. Request review once linting, formatting, and preview checks pass locally.
+
+## Auth Integration Notes
+Future sign-up/login flows will eventually call a real backend. Plan for CSRF by injecting an `authenticity_token` in server-rendered forms, or issuing a `/csrf-token` fetch on mount and submitting it with SPA requests. Replace current mock handlers with `authService` abstractions so the transition stays isolated.
