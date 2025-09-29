@@ -1,24 +1,24 @@
 <template>
-  <header class="site-header" :class="{ 'search-mode': isSearchMode }">
+  <header class="site-header" :class="{ 'search-mode': isSearchMode, minimal: isMinimal }">
     <div class="header-content">
-      <div class="header-left" @click="handleSearchClick">
+      <div v-if="!isMinimal" class="header-left" @click="handleSearchClick">
         <div class="search-bar">
           <input type="text" placeholder="コーディネートやユーザーを探す" />
         </div>
       </div>
 
-      <div class="header-center" v-if="!isSearchMode">
-        <a href="/">
+      <div class="header-center" v-if="!isSearchMode || isMinimal">
+        <RouterLink to="/">
           <svg width="147" height="32" viewBox="0 0 147 32" xmlns="http://www.w3.org/2000/svg">
             <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
               font-family="Helvetica, Arial, sans-serif" font-size="30" font-weight="bold" fill="#1C1C1C">
               LCY
             </text>
           </svg>
-        </a>
+        </RouterLink>
       </div>
 
-      <div class="header-right" v-if="!isSearchMode">
+      <div class="header-right" v-if="!isSearchMode && !isMinimal">
         <RouterLink to="/signup" class="header-link">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -38,6 +38,10 @@ import { RouterLink } from 'vue-router'
 
 const props = defineProps({
   isSearchMode: {
+    type: Boolean,
+    default: false
+  },
+  isMinimal: {
     type: Boolean,
     default: false
   }
@@ -102,6 +106,14 @@ function handleSearchClick() {
   margin: 0 auto;
   height: 60px;
   padding: 0 20px;
+}
+
+.site-header.minimal .header-content {
+  justify-content: center;
+}
+
+.site-header.minimal .header-center {
+  padding: 0;
 }
 
 /* --- 關鍵佈局技巧：三欄等寬，確保中間完美置中 --- */

@@ -1,5 +1,9 @@
      <template>
-      <TheHeader @open-search="openSearch" :isSearchMode="isSearchOpen" />
+      <TheHeader
+        @open-search="openSearch"
+        :isSearchMode="isMinimalHeader ? false : isSearchOpen"
+        :isMinimal="isMinimalHeader"
+      />
       <main>
         <RouterView />
       </main>
@@ -19,6 +23,8 @@ const route = useRoute()
 const shouldShowOverlay = computed(
   () => route.name === 'home' && isSearchOpen.value
 )
+
+const isMinimalHeader = computed(() => route.name === 'signup')
 
 function openSearch() { isSearchOpen.value = true }
 function closeSearch() { isSearchOpen.value = false }
